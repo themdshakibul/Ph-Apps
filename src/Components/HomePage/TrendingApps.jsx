@@ -1,14 +1,21 @@
 import reatingImage from "../../assets/Image/icon-ratings.png";
 import downloadImage from "../../assets/Image/icon-downloads.png";
-import Demo1 from "../../assets/Image/demo-app (1).webp";
+import demoImage from "../../assets/Image/demo-app (1).webp";
 import { NavLink } from "react-router";
-import { use } from "react";
-
-const appPromis = fetch("/CardData.json").then((res) => res.json());
+import { useEffect, useState } from "react";
 
 const TrendingApps = () => {
-  const apps = use(appPromis);
-  console.log("app", apps);
+  const [apps, setApps] = useState();
+  console.log(apps);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("/AppData.json");
+      const data = await res.json();
+      setApps(data);
+    };
+    fetchData();
+  }, []);
 
   return (
     <section>
@@ -23,7 +30,7 @@ const TrendingApps = () => {
         {/* All card */}
         <div className="grid grid-cols-4 gap-5">
           <div className="card card-body bg-base-300 shadow-2xl space-y-4">
-            <img src={Demo1} alt="" className="rounded-lg" />
+            <img src={demoImage} alt="" className="rounded-lg" />
             <h4 className="text-3xl font-semibold">
               Forest: Focus for Productivity
             </h4>
