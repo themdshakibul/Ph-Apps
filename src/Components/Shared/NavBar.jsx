@@ -1,7 +1,24 @@
 import { NavLink } from "react-router";
 import navLogo from "../../assets/Image/logo.png";
 import { FaGithub } from "react-icons/fa";
+import MyNavLink from "./MyNavLink";
+
 const NavBar = () => {
+  const navItems = [
+    {
+      path: "/",
+      text: "HomePage",
+    },
+    {
+      path: "/apps",
+      text: "AllApps",
+    },
+    {
+      path: "/inistallation",
+      text: "InstalledPage",
+    },
+  ];
+
   return (
     <section>
       <div className="bg-base-100 shadow-sm">
@@ -33,39 +50,20 @@ const NavBar = () => {
                 tabIndex="-1"
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
               >
-                <NavLink to={"/"}>Home</NavLink>
-                <NavLink to={"/apps"}>Apps</NavLink>
-                <NavLink to={"/inistallation"}>Inistallation</NavLink>
+                <div>
+                  {navItems.map((nav) => (
+                    <MyNavLink to={nav.ptah}>{nav.text}</MyNavLink>
+                  ))}
+                </div>
               </ul>
             </div>
             <img src={navLogo} alt="Nav Images" className="w-10" />
           </div>
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1 gap-10 items-center font-semibold">
-              <NavLink
-                to={"/"}
-                className={({ isActive }) =>
-                  isActive ? "btn bg-purple-500 text-white" : ""
-                }
-              >
-                Home
-              </NavLink>
-              <NavLink
-                to={"/apps"}
-                className={({ isActive }) =>
-                  isActive ? "btn bg-purple-500 text-white" : ""
-                }
-              >
-                Apps
-              </NavLink>
-              <NavLink
-                to={"/inistallation"}
-                className={({ isActive }) =>
-                  isActive ? "btn bg-purple-500 text-white" : ""
-                }
-              >
-                Inistallation
-              </NavLink>
+            <ul className="menu menu-horizontal  gap-10 items-center font-semibold">
+              {navItems.map((nav) => (
+                <MyNavLink to={nav.path}>{nav.text}</MyNavLink>
+              ))}
             </ul>
           </div>
           <div className="navbar-end">

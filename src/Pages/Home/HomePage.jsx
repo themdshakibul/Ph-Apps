@@ -1,9 +1,13 @@
-import React from "react";
+import Heder from "../../Components/HomePage/Heder";
+import ThrustedPages from "../../Components/HomePage/ThrustedPages";
+import TrendingApps from "../../Components/HomePage/TrendingApps";
 
 const HomePage = () => {
   return (
     <div>
-      <h2>Home pages</h2>
+      <Heder />
+      <ThrustedPages />
+      <TrendingApps />
     </div>
   );
 };
