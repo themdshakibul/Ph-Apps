@@ -51,8 +51,8 @@ const NavBar = () => {
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
               >
                 <div>
-                  {navItems.map((nav) => (
-                    <MyNavLink to={nav.ptah}>{nav.text}</MyNavLink>
+                  {navItems.map((nav, ind) => (
+                    <MyNavLink key={ind} to={nav.ptah}>{nav.text}</MyNavLink>
                   ))}
                 </div>
               </ul>
@@ -61,8 +61,8 @@ const NavBar = () => {
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal  gap-10 items-center font-semibold">
-              {navItems.map((nav) => (
-                <MyNavLink to={nav.path}>{nav.text}</MyNavLink>
+              {navItems.map((nav, ind) => (
+                <MyNavLink key={ind} to={nav.path}>{nav.text}</MyNavLink>
               ))}
             </ul>
           </div>

@@ -1,12 +1,10 @@
 import reatingImage from "../../assets/Image/icon-ratings.png";
 import downloadImage from "../../assets/Image/icon-downloads.png";
-import demoImage from "../../assets/Image/demo-app (1).webp";
 import { NavLink } from "react-router";
 import { useEffect, useState } from "react";
 
 const TrendingApps = () => {
-  const [apps, setApps] = useState();
-  console.log(apps);
+  const [apps, setApps] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,21 +26,33 @@ const TrendingApps = () => {
         </header>
 
         {/* All card */}
-        <div className="grid grid-cols-4 gap-5">
-          <div className="card card-body bg-base-300 shadow-2xl space-y-4">
-            <img src={demoImage} alt="" className="rounded-lg" />
-            <h4 className="text-3xl font-semibold">
-              Forest: Focus for Productivity
-            </h4>
-            <div className="flex items-center justify-between">
-              <button className="btn flex items-center gap-2">
-                <img src={downloadImage} alt="" className="w-4 h-4" /> 9M
-              </button>
-              <button className="btn flex items-center gap-2">
-                <img src={reatingImage} alt="" className="w-4 h-4" /> 5
-              </button>
-            </div>
-          </div>
+        <div className="grid grid-cols-4 gap-10">
+          {apps.map((app) => (
+            <NavLink
+              to={"/"}
+              key={app.id}
+              className="card flex flex-col h-full card-body bg-base-200 border border-gray-300 hover:border-cyan-500 space-y-4 transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl hover:shadow-cyan-100 cursor-pointer"
+            >
+              <img
+                src={app.image}
+                alt={app.companyName}
+                className="rounded-3xl w-full"
+              />
+
+              <h4 className="text-3xl font-semibold">{app.title}</h4>
+
+              <div className="flex items-center justify-between mt-auto pt-4">
+                <button className="btn flex items-center gap-2 text-green-500">
+                  <img src={downloadImage} alt="" className="w-4 h-4" />
+                  {app.downloads}
+                </button>
+                <button className="btn flex items-center gap-2 text-amber-600">
+                  <img src={reatingImage} alt="" className="w-4 h-4" />
+                  {app.ratingAvg}
+                </button>
+              </div>
+            </NavLink>
+          ))}
         </div>
 
         {/* Link to apps apges */}
