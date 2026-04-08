@@ -18,8 +18,8 @@ const AllApps = () => {
           </div>
         ) : (
           <div className="grid grid-cols-4 gap-10">
-            {apps.map((app) => (
-              <AppCard app={app} />
+            {apps.map((app, ind) => (
+              <AppCard key={ind} app={app} />
             ))}
           </div>
         )}

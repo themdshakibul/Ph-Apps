@@ -5,11 +5,15 @@ import { DotLoader } from "react-spinners";
 import downloadImage from "../../assets/Image/icon-downloads.png";
 import reatingImage from "../../assets/Image/icon-ratings.png";
 import reviewImages from "../../assets/Image/icon-review.png";
+import { useContext } from "react";
+import { InstallAppContext } from "../../Context/InstallProveider";
 
 const AppDeetails = () => {
   const { id } = useParams();
   const { apps, loading } = UseData();
   const expectedApps = apps.find((app) => String(app.id) === id);
+
+  const { installApp, setInstallApp } = useContext(InstallAppContext);
 
   if (loading) {
     return (
@@ -18,6 +22,12 @@ const AppDeetails = () => {
       </div>
     );
   }
+
+  const handelInstallApps = () => {
+    setInstallApp([...installApp, expectedApps]);
+  };
+
+  console.log(installApp, "installApps");
 
   return (
     <section>
@@ -28,7 +38,7 @@ const AppDeetails = () => {
             <img
               src={expectedApps.image}
               alt={expectedApps.title}
-              className="w-64 h-64 rounded-3xl shadow-lg object-cover"
+              className="w-64 h-64 rounded-3xl object-cover"
             />
           </div>
 
@@ -85,7 +95,10 @@ const AppDeetails = () => {
 
             {/* Action Button */}
             <div className="flex flex-col gap-4 w-fit">
-              <button className="btn btn-success btn-lg px-10 font-bold text-white shadow-md hover:shadow-lg transition-all">
+              <button
+                onClick={handelInstallApps}
+                className="btn btn-success btn-lg px-10 font-bold text-white shadow-md hover:shadow-lg transition-all"
+              >
                 Install Now ({expectedApps.size} MB)
               </button>
             </div>

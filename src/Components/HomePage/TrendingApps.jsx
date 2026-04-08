@@ -23,10 +23,10 @@ const TrendingApps = () => {
           </div>
         ) : (
           <div className="grid grid-cols-4 gap-10">
-            {apps.slice(0, 8).map((app) => (
+            {apps.slice(0, 8).map((app, ind) => (
               <Link
                 to={`/apps/${app.id}`}
-                key={app.id}
+                key={ind}
                 className="card flex flex-col h-full card-body bg-base-200 border border-gray-300 hover:border-cyan-500 space-y-4 transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl hover:shadow-cyan-100 cursor-pointer"
               >
                 <img
