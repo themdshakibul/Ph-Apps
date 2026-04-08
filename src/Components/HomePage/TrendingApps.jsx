@@ -1,6 +1,6 @@
 import reatingImage from "../../assets/Image/icon-ratings.png";
 import downloadImage from "../../assets/Image/icon-downloads.png";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 
 import { DotLoader } from "react-spinners";
 import UseData from "../Hooks/UseData";
@@ -24,8 +24,8 @@ const TrendingApps = () => {
         ) : (
           <div className="grid grid-cols-4 gap-10">
             {apps.slice(0, 8).map((app) => (
-              <NavLink
-                to={"/"}
+              <Link
+                to={`/apps/${app.id}`}
                 key={app.id}
                 className="card flex flex-col h-full card-body bg-base-200 border border-gray-300 hover:border-cyan-500 space-y-4 transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl hover:shadow-cyan-100 cursor-pointer"
               >
@@ -47,12 +47,11 @@ const TrendingApps = () => {
                     {app.ratingAvg}
                   </button>
                 </div>
-              </NavLink>
+              </Link>
             ))}
           </div>
         )}
 
-        
         {/* Link to apps apges */}
         <NavLink
           to={"/apps"}
