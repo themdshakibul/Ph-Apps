@@ -1,25 +1,12 @@
 import reatingImage from "../../assets/Image/icon-ratings.png";
 import downloadImage from "../../assets/Image/icon-downloads.png";
 import { NavLink } from "react-router";
-import { useEffect, useState } from "react";
+
 import { DotLoader } from "react-spinners";
+import UseData from "../Hooks/UseData";
 
 const TrendingApps = () => {
-  const [apps, setApps] = useState([]);
-  const [loading, setLoadig] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch("/AppData.json");
-      const data = await res.json();
-
-      setTimeout(() => {
-        setApps(data);
-        setLoadig(false);
-      }, 1000);
-    };
-    fetchData();
-  }, []);
+  const { apps, loading } = UseData();
 
   return (
     <section>
@@ -64,6 +51,8 @@ const TrendingApps = () => {
             ))}
           </div>
         )}
+
+        
         {/* Link to apps apges */}
         <NavLink
           to={"/apps"}
