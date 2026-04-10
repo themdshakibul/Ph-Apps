@@ -71,9 +71,11 @@ const NavBar = () => {
             </ul>
           </div>
           <div className="navbar-end">
-            <button className="btn bg-purple-500 font-semibold text-white">
-              <FaGithub /> Contribute
-            </button>
+            <NavLink to={"/the"}>
+              <button className="btn bg-purple-500 font-semibold text-white">
+                <FaGithub /> Contribute
+              </button>
+            </NavLink>
           </div>
         </div>
       </div>
