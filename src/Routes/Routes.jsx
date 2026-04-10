@@ -5,6 +5,7 @@ import AllApps from "../Pages/Apps/AllApps";
 import InstalledPage from "../Pages/InistalledApp/InstalledPage";
 import ErrorPage from "../Pages/Error/ErrorPage";
 import AppDeetails from "../Pages/AppDetails/AppDeetails";
+import DashBord from "../Pages/DashBord/DashBord";
 
 export const route = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ export const route = createBrowserRouter([
       {
         path: "/inistallation",
         Component: InstalledPage,
+      },
+      {
+        path: "/dashbord",
+        Component: DashBord,
       },
     ],
     errorElement: <ErrorPage />,

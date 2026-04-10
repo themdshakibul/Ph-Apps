@@ -17,6 +17,10 @@ const NavBar = () => {
       path: "/inistallation",
       text: "InstalledPage",
     },
+    {
+      path: "/dashbord",
+      text: "DashBord",
+    },
   ];
 
   return (
