@@ -6,7 +6,7 @@ const AllApps = () => {
   return (
     <section>
       <div className="container mx-auto px-2">
-        <header className="space-y-3 text-center mb-10">
+        <header className="space-y-3 text-center py-10">
           <h2 className="text-5xl font-bold">Trending Apps</h2>
           <p className="font-semibold ">
             Explore All Trending Apps on the Market developed by us

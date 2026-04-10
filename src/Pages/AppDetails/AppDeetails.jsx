@@ -7,6 +7,7 @@ import reatingImage from "../../assets/Image/icon-ratings.png";
 import reviewImages from "../../assets/Image/icon-review.png";
 import { useContext } from "react";
 import { InstallAppContext } from "../../Context/InstallProveider";
+import { toast } from "react-toastify";
 
 const AppDeetails = () => {
   const { id } = useParams();
@@ -24,10 +25,18 @@ const AppDeetails = () => {
   }
 
   const handelInstallApps = () => {
-    setInstallApp([...installApp, expectedApps]);
-  };
+    const alreadyInstalled = installApp.find(
+      (app) => app.id === expectedApps.id,
+    );
 
-  console.log(installApp, "installApps");
+    if (alreadyInstalled) {
+      toast.error(`${expectedApps.title} already installed!`);
+      return;
+    }
+
+    setInstallApp([...installApp, expectedApps]);
+    toast.success(`${expectedApps.title} is installed!`);
+  };
 
   return (
     <section>

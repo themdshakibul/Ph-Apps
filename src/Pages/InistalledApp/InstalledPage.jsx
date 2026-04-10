@@ -3,10 +3,16 @@ import { InstallAppContext } from "../../Context/InstallProveider";
 
 import downloadImage from "../../assets/Image/icon-downloads.png";
 import reatingImage from "../../assets/Image/icon-ratings.png";
+import { toast } from "react-toastify";
 
 const InstalledPage = () => {
   const { installApp, setInstallApp } = useContext(InstallAppContext);
-  console.log(installApp, setInstallApp);
+
+  const handelUnstall = (uApp) => {
+    const unstallApp = installApp.filter((iApp) => iApp.id != uApp.id);
+    setInstallApp(unstallApp);
+    toast.warning(`${uApp.title} is Unstalled!`);
+  };
 
   return (
     <section>
@@ -56,7 +62,10 @@ const InstalledPage = () => {
                 </div>
 
                 {/* Action Button */}
-                <button className="btn btn-success btn-block md:btn-md md:w-auto text-white font-bold px-8">
+                <button
+                  onClick={() => handelUnstall(install)}
+                  className="btn btn-success btn-block md:btn-md md:w-auto text-white font-bold px-8"
+                >
                   Uninstall
                 </button>
               </div>
